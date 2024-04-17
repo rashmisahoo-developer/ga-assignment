@@ -21,6 +21,6 @@ jobs:
       - name: Build and deploy Azure Resources
         uses: azure/arm-deploy@v1
         with:
-          resourceGroupName: "WebAppGroup" #change to reflect your Resource Group
+          resourceGroupName: "WebApp" #change to reflect your Resource Group
           template: storageAccount.bicep
         
