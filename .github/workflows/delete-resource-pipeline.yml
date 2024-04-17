@@ -7,8 +7,6 @@ jobs:
   build: 
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v1
       - name: Echo script
         run: echo Starting Script
       - name: Login with Azure
@@ -16,4 +14,5 @@ jobs:
         with:
           creds: '${{ secrets.AZURE_CREDENTIALS }}'
       - name: Deleting one of the deployed resources
-        run: az deployment group delete --resource-group DeployResources --name storage7ypzclpgodtua
+        run: |
+            az group deployment delete --resource-group DeployResources --name storage7ypzclpgodtua
