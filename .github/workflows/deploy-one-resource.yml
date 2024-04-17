@@ -4,23 +4,25 @@ on:
     branches:
       - main 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Set up Azure CLI
+        uses: actions/checkout@v3
+      - name: Echo Script
+        run: echo Starting Bicep ..
+      - name: Login with Azure
         uses: azure/login@v1
         with: 
-          creds: ${{secrets.AZURE_CREDENTIALS}}
+          creds: '${{ secrets.AZURE_CREDENTIALS }}'
       # - name: Install Bicep CLI
       #   run:  |
       #     curl -Lo bicep https://github.com/Azure/bicep/releases/latest/download/bicep-linux-x64
       #     chmod +x ./bicep
       #     sudo mv ./bicep /usr/local/bin/bicep
-      - name: Build and deploy Azure Resources
+      - name: Deploy Bicep Script
         uses: azure/arm-deploy@v1
         with:
-          resourceGroupName: "WebApp" #change to reflect your Resource Group
+          resourceGroupName: "DeployResources" #change to reflect your Resource Group
           template: storageAccount.bicep
         
