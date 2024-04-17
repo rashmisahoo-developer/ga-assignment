@@ -16,4 +16,4 @@ jobs:
         with:
           creds: '${{ secrets.AZURE_CREDENTIALS }}'
       - name: Deleting one of the deployed resources
-        run: az group delete --ids '/subscriptions/acf80b05-4935-4573-a50b-c2dbb0c67e6a/resourceGroups/DeployResources/providers/Microsoft.Storage/storageAccounts/storage7ypzclpgodtua' --yes 
+        run: az deployment group delete --name storage7ypzclpgodtua --resource-group DeployResources --yes --no-wait
