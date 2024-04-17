@@ -16,8 +16,4 @@ jobs:
         with:
           creds: '${{ secrets.AZURE_CREDENTIALS }}'
       - name: Deleting one of the deployed resources
-        uses: azure/delete@v1
-        with: 
-          resourceGroupName: "DeployResources"
-          template: storageAccount.bicep
-
+        run: az group delete --ids '/subscriptions/acf80b05-4935-4573-a50b-c2dbb0c67e6a/resourceGroups/DeployResources/providers/Microsoft.Storage/storageAccounts/storage7ypzclpgodtua' --yes 
