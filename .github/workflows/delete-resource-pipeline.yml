@@ -15,4 +15,4 @@ jobs:
           creds: '${{ secrets.AZURE_CREDENTIALS }}'
       - name: Deleting one of the deployed resources
         run: |
-            az group deployment delete --resource-group DeployResources --name storage7ypzclpgodtua
+            az deployment group delete --resource-group DeployResources --name storage7ypzclpgodtua
