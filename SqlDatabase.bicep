@@ -1,18 +1,28 @@
 param location string=resourceGroup().location
+param sqlServerName string ='sql${uniqueString(resourceGroup().id)}'
+param sqlDBName string='sqldatabase${uniqueString(resourceGroup().id)}'
 
-resource sqlServer 'Microsoft.Sql/servers@2014-04-01' ={
-  name: 'sql${uniqueString(resourceGroup().id)}'
-  location: location
-}
+param administratorLogin string= 'rashmi'
 
-resource sqlServerDatabase 'Microsoft.Sql/servers/databases@2014-04-01' = {
-  parent: sqlServer
-  name: 'sqldatabase${uniqueString(resourceGroup().id)}'
+@secure()
+param administratorPassword string= 'demo@123456789'
+
+
+resource sqlServer 'Microsoft.Sql/servers@2022-05-01-preview' = {
+  name: sqlServerName
   location: location
   properties: {
-    collation: 'collation'
-    edition: 'Basic'
-    maxSizeBytes: 'maxSizeBytes'
-    requestedServiceObjectiveName: 'Basic'
+    administratorLogin: administratorLogin
+    administratorLoginPassword: administratorPassword
+  }
+}
+
+resource sqlDB 'Microsoft.Sql/servers/databases@2022-05-01-preview' = {
+  parent: sqlServer
+  name: sqlDBName
+  location: location
+  sku: {
+    name: 'Standard'
+    tier: 'Standard'
   }
 }
