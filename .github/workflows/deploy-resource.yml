@@ -36,7 +36,7 @@ jobs:
         with:
           creds: '${{ secrets.AZURE_CREDENTIALS}}'
       - name: Deploy Web Application
-        uses: azure/arm-deploy@v2
+        uses: azure/arm-deploy@v1
         with:
           resourceGroupName: "DeployResources"
           template: webApp.bicep
@@ -51,7 +51,7 @@ jobs:
         with:
           creds: '${{ secrets.AZURE_CREDENTIALS}}'
       - name: Deploy SQL Database
-        uses: azure/arm-deploy@v2
+        uses: azure/arm-deploy@v1
         with:
           resourceGroupName: "DeployResources"
           template: SqlDatabase.bicep
