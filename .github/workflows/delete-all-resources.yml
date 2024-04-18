@@ -1,0 +1,20 @@
+name: Delete All resource using Pipeline
+on:
+  push:
+    branches:
+      - main 
+jobs:
+  build: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo script
+        run: echo Starting Script
+      - name: Login with Azure
+        uses: azure/login@v1
+        with:
+          creds: '${{ secrets.AZURE_CREDENTIALS }}'
+      - name: Deleting all resources
+        run: |
+            az group delete --name "DeployResources"
+
+      
