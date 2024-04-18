@@ -5,7 +5,7 @@ param sqlDBName string='sqldatabase${uniqueString(resourceGroup().id)}'
 param administratorLogin string= 'rashmi'
 
 @secure()
-param administratorPassword string= 'demo@123456789'
+param administratorPassword string= newGuid()
 
 
 resource sqlServer 'Microsoft.Sql/servers@2022-05-01-preview' = {
