@@ -4,12 +4,12 @@ on:
     branches:
       - main 
 jobs:
-  build:
+  deploy-storage-account:
     runs-on: ubuntu-latest 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Echo Script
+      - name: Echo Start script to deploy storage account
         run: echo Starting Bicep ..
       - name: Login with Azure
         uses: azure/login@v1
@@ -25,5 +25,34 @@ jobs:
         with:
           resourceGroupName: "DeployResources" #change to reflect your Resource Group
           template: storageAccount.bicep
-          scope: 'resourcegroup'
-        
+          scope: "resourcegroup"
+  deploy-web-app:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Script to deploy web app
+        run: echo Starting script to deploy web app resource
+      - name: Login with Azure
+        uses: azure/login@v1
+        with:
+          creds: '${{ secrets.AZURE_CREDENTIALS}}'
+      - name: Deploy Web Application
+        uses: azure/arm-deploy@v2
+        with:
+          resourceGroupName: "DeployResources"
+          template: webApp.bicep
+          scope: "resourcegroup"
+  deploy-sql-db:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Script to deploy sql db
+        run: echo Starting script to deploy sql db resource
+      - name: Login with Azure
+        uses: azure/login@v1
+        with:
+          creds: '${{ secrets.AZURE_CREDENTIALS}}'
+      - name: Deploy SQL Database
+        uses: azure/arm-deploy@v2
+        with:
+          resourceGroupName: "DeployResources"
+          template: sqlDatabase.bicep
+          scope: "resourcegroup"
