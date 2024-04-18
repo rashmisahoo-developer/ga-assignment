@@ -16,5 +16,3 @@ jobs:
       - name: Deleting all resources
         run: |
             az group delete --name "DeployResources" --yes --no-wait
-
-      
