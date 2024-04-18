@@ -34,3 +34,7 @@ jobs:
             scope: "resourcegroup"
       - name: Deploy Sql Database
         run: az deployment group create --resource-group DeployResources --template-file SqlDatabase.bicep --parameters administratorLogin=rashmi  
+      - name: Deleting one of the deployed resources
+        run: |
+            az resource delete -g DeployResources -n webAppDeploy7ypzclpgodtua --resource-type "Microsoft.Web/sites"
+      
