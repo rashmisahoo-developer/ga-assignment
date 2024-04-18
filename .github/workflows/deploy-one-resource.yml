@@ -54,5 +54,5 @@ jobs:
         uses: azure/arm-deploy@v2
         with:
           resourceGroupName: "DeployResources"
-          template: sqlDatabase.bicep
+          template: SqlDatabase.bicep
           scope: "resourcegroup"
