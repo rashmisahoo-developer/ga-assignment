@@ -20,39 +20,21 @@ jobs:
       #     curl -Lo bicep https://github.com/Azure/bicep/releases/latest/download/bicep-linux-x64
       #     chmod +x ./bicep
       #     sudo mv ./bicep /usr/local/bin/bicep
-      - name: Deploy Bicep Script
+      - name: Deploy Storage Acoount
         uses: azure/arm-deploy@v1
         with:
           resourceGroupName: "DeployResources" #change to reflect your Resource Group
           template: storageAccount.bicep
           scope: "resourcegroup"
-  deploy-web-app:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Script to deploy web app
-        run: echo Starting script to deploy web app resource
-      - name: Login with Azure
-        uses: azure/login@v1
-        with:
-          creds: '${{ secrets.AZURE_CREDENTIALS}}'
-      - name: Deploy Web Application
+      - name: Deploy Web App
         uses: azure/arm-deploy@v1
         with:
-          resourceGroupName: "DeployResources"
-          template: .\webApp.bicep
-          scope: "resourcegroup"
-  deploy-sql-db:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Script to deploy sql db
-        run: echo Starting script to deploy sql db resource
-      - name: Login with Azure
-        uses: azure/login@v1
-        with:
-          creds: '${{ secrets.AZURE_CREDENTIALS}}'
-      - name: Deploy SQL Database
+            resourceGroupName: "DeployResources" #change to reflect your Resource Group
+            template: webApp.bicep
+            scope: "resourcegroup"
+      - name: Deploy Sql Database
         uses: azure/arm-deploy@v1
         with:
-          resourceGroupName: "DeployResources"
-          template: .\SqlDatabase.bicep
-          scope: "resourcegroup"
+            resourceGroupName: "DeployResources" #change to reflect your Resource Group
+            template: SqlDatabase.bicep
+            scope: "resourcegroup"
