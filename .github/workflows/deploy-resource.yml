@@ -33,8 +33,4 @@ jobs:
             template: webApp.bicep
             scope: "resourcegroup"
       - name: Deploy Sql Database
-        uses: azure/arm-deploy@v1
-        with:
-            resourceGroupName: "DeployResources" #change to reflect your Resource Group
-            template: SqlDatabase.bicep
-            scope: "resourcegroup"
+        run: az deployment group create --resource-group DeployResources --template-file SqlDatabase.bicep --parameters administratorLogin=rashmi  
