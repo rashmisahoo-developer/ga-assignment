@@ -16,4 +16,4 @@ jobs:
           creds: '${{ secrets.AZURE_CREDENTIALS }}'
       - name: Deleting all resources
         run: |
-            az group delete --name "DeployResources" --yes 
+            az group delete --name Application --yes 
