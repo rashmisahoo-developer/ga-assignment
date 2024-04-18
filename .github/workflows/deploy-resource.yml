@@ -4,7 +4,7 @@ on:
     branches:
       - main 
 jobs:
-  deploy-storage-account:
+  deploy-resources:
     runs-on: ubuntu-latest 
     steps:
       - name: Checkout repository
@@ -20,7 +20,7 @@ jobs:
       #     curl -Lo bicep https://github.com/Azure/bicep/releases/latest/download/bicep-linux-x64
       #     chmod +x ./bicep
       #     sudo mv ./bicep /usr/local/bin/bicep
-      - name: Deploy Storage Acoount
+      - name: Deploy Storage Account
         uses: azure/arm-deploy@v1
         with:
           resourceGroupName: "DeployResources" #change to reflect your Resource Group
