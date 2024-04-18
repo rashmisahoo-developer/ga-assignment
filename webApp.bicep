@@ -1,10 +1,23 @@
+param location string = resourceGroup().location
 resource webApplication 'Microsoft.Web/sites@2021-01-15' = {
   name: 'webAppDeploy'
-  location: resourceGroup().location
+  location: location
+  dependsOn: [
+    appServicePlan
+  ]
   tags: {
     'hidden-related:${resourceGroup().id}/providers/Microsoft.Web/serverfarms/appServicePlan': 'Resource'
   }
   properties: {
-    serverFarmId: 'webServerFarms.id'
+    serverFarmId: appServicePlan.id
+}
+}
+
+resource appServicePlan 'Microsoft.Web/serverfarms@2020-12-01' = {
+  name: 'appservice'
+  location: location
+  sku: {
+    name: 'F1'
+    capacity: 1
   }
 }
