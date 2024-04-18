@@ -16,3 +16,4 @@ jobs:
       - name: Deleting one of the deployed resources
         run: |
             az resource delete -g DeployResources -n storage7ypzclpgodtua --resource-type "Microsoft.Storage/storageAccounts"
+            
