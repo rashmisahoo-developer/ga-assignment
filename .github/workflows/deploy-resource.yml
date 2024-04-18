@@ -1,4 +1,4 @@
-name: Deploy one Azure Resources
+name: Deploy Azure Resources and perform deletion for specific resource
 on:
   push:
     branches:
