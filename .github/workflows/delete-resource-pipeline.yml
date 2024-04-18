@@ -17,4 +17,4 @@ jobs:
         run: |
             az resource delete -g DeployResources -n storage7ypzclpgodtua --resource-type "Microsoft.Storage/storageAccounts"
 
-            
+      

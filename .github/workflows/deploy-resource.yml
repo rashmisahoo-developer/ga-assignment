@@ -26,15 +26,9 @@ jobs:
           resourceGroupName: "DeployResources" #change to reflect your Resource Group
           template: storageAccount.bicep
           scope: "resourcegroup"
-      - name: Deploy Web App
-        uses: azure/arm-deploy@v1
-        with:
-            resourceGroupName: "DeployResources" #change to reflect your Resource Group
-            template: webApp.bicep
-            scope: "resourcegroup"
       - name: Deploy Sql Database
         run: az deployment group create --resource-group DeployResources --template-file SqlDatabase.bicep --parameters administratorLogin=rashmi  
       - name: Deleting one of the deployed resources
         run: |
-            az resource delete -g DeployResources -n webAppDeploy7ypzclpgodtua --resource-type "Microsoft.Web/sites"
+            az resource delete -g DeployResources -n sqldatabase7ypzclpgodtua --resource-type "Microsoft.Sql/servers/databases"
       
