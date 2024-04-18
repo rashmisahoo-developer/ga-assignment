@@ -25,4 +25,5 @@ jobs:
         with:
           resourceGroupName: "DeployResources" #change to reflect your Resource Group
           template: storageAccount.bicep
+          scope: 'resource-group'
         
