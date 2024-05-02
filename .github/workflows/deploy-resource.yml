@@ -9,28 +9,33 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+
       - name: Echo Start script to deploy storage account
         run: echo Starting Bicep ..
+
       - name: Login with Azure
         uses: azure/login@v1
         with: 
           creds: '${{ secrets.AZURE_CREDENTIALS }}'
-      # - name: Install Bicep CLI
-      #   run:  |
-      #     curl -Lo bicep https://github.com/Azure/bicep/releases/latest/download/bicep-linux-x64
-      #     chmod +x ./bicep
-      #     sudo mv ./bicep /usr/local/bin/bicep
+
       - name: Create Resource Group
         run: az group create -g Application -l eastus 
+
       - name: Deploy Storage Account
         uses: azure/arm-deploy@v1
         with:
-          resourceGroupName: "Application" #change to reflect your Resource Group
+          resourceGroupName: "Application"
           template: storageAccount.bicep
           scope: "resourcegroup"
+
       - name: Deploy Sql Database
         run: az deployment group create --resource-group Application --template-file SqlDatabase.bicep --parameters administratorLogin=rashmi  
+      
       - name: Deleting one of the deployed resources
         run: |
             az resource delete -g Application -n sqldatabase7ypzclpgodtua --resource-type "Microsoft.Sql/servers/databases"
-      
+
+      - name: Deleting all resources
+        run: |
+                az group delete --name Application --yes 
+    
