@@ -9,4 +9,4 @@ resource storageaccount 'Microsoft.Storage/storageAccounts@2021-02-01' = {
     name: 'Premium_LRS'
   }
 }
-//updates added
+//updates added 1
