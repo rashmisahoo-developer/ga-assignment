@@ -39,4 +39,3 @@ jobs:
         run: |
                 az group delete --name Application --yes 
     
-                
