@@ -1,4 +1,4 @@
-param name string = 'storage4634'
+param name string = 'storagerashmi46342146'
 param location string=resourceGroup().location
 
 resource storageaccount 'Microsoft.Storage/storageAccounts@2021-02-01' = {
