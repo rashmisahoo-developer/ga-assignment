@@ -1,12 +1,12 @@
-param location string=resourceGroup().location
-param sqlServerName string ='sqlServer463421461'
-param sqlDBName string='sqlDatabase463421461'
+param location string
+param sqlServerName string
+param sqlDBName string
 
 @description('Username for administrator login')
 param administratorLogin string
 
 @secure()
-param administratorPassword string= newGuid()
+param administratorPassword string
 
 
 resource sqlServer 'Microsoft.Sql/servers@2022-05-01-preview' = {

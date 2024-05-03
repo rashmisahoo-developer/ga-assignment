@@ -29,13 +29,13 @@ jobs:
           scope: "resourcegroup"
 
       - name: Deploy Sql Database
-        run: az deployment group create --resource-group DeployApplication1 --template-file SqlDatabase.bicep --parameters administratorLogin=rashmi  
+        run: az deployment group create --resource-group DeployApplication1 --template-file main.bicep --parameters administratorLogin=rashmi  
       
       - name: Deleting one of the deployed resources
         run: |
           az resource delete -g DeployApplication1 -n storage4634 --resource-type "Microsoft.Storage/storageAccounts"
 
       - name: Deleting all resources
-        run: az group delete --name DeployApplication1 --yes 
+        run: az group delete --name DeployApplication --yes 
 
         #updated
