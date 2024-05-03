@@ -1,6 +1,6 @@
 param location string=resourceGroup().location
-param sqlServerName string ='sqlServer${uniqueString(resourceGroup().id)}'
-param sqlDBName string='sqlDatabase'
+param sqlServerName string ='sqlServer46342146'
+param sqlDBName string='sqlDatabase46342146'
 
 @description('Username for administrator login')
 param administratorLogin string
