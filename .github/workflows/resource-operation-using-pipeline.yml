@@ -1,4 +1,4 @@
-name: Deploy Azure Resources and perform deletion for specific resource
+name: Deploy Azure Resources and perform deletion operation for resources
 on:
   push:
     branches:
@@ -8,10 +8,10 @@ jobs:
     runs-on: ubuntu-latest 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v1
 
-      - name: Echo Start script to deploy storage account
-        run: echo Starting Bicep ..
+      - name: Echo Start the bicep pipeline task
+        run: echo Starting the bicep pipeline task ..
 
       - name: Login with Azure
         uses: azure/login@v1
@@ -32,10 +32,9 @@ jobs:
         run: az deployment group create --resource-group Application --template-file SqlDatabase.bicep --parameters administratorLogin=rashmi  
       
       - name: Deleting one of the deployed resources
-        run: |
+        run: 
             az resource delete -g Application -n sqldatabase7ypzclpgodtua --resource-type "Microsoft.Sql/servers/databases"
 
       - name: Deleting all resources
-        run: |
-                az group delete --name Application --yes 
+        run: az group delete --name Application --yes 
     
