@@ -33,7 +33,7 @@ jobs:
       
       - name: Deleting one of the deployed resources
         run: 
-            az resource delete -g Application -n sqldatabase7ypzclpgodtua --resource-type "Microsoft.Sql/servers/databases"
+            az resource delete -g Application -n sqldatabasedzkk44adqruym --resource-type "Microsoft.Sql/servers/databases"
 
       - name: Deleting all resources
         run: az group delete --name Application --yes 
