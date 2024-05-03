@@ -19,23 +19,21 @@ jobs:
           creds: '${{ secrets.AZURE_CREDENTIALS }}'
 
       - name: Create Resource Group
-        run: az group create -g DeployApplication1 -l eastus 
+        run: az group create -g Applications -l eastus 
 
       - name: Deploy Storage Account
         uses: azure/arm-deploy@v1
         with:
-          resourceGroupName: "DeployApplication1"
+          resourceGroupName: "Applications"
           template: storageAccount.bicep
           scope: "resourcegroup"
 
       - name: Deploy Sql Database
-        run: az deployment group create --resource-group DeployApplication1 --template-file main.bicep --parameters administratorLogin=rashmi  
+        run: az deployment group create --resource-group Applications --template-file main.bicep --parameters administratorLogin=rashmi  
       
       - name: Deleting one of the deployed resources
         run: |
-          az resource delete -g DeployApplication1 -n storage4634 --resource-type "Microsoft.Storage/storageAccounts"
+          az resource delete -g Applications -n storage4634 --resource-type "Microsoft.Storage/storageAccounts"
 
       - name: Deleting all resources
-        run: az group delete --name DeployApplication --yes 
-
-        #updated
+        run: az group delete --name Applications --yes 
