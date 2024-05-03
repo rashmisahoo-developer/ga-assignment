@@ -37,4 +37,3 @@ jobs:
 
       - name: Deleting all resources
         run: az group delete --name Application --yes 
-    
