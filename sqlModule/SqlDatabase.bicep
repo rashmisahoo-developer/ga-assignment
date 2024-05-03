@@ -1,5 +1,5 @@
-param location string
 param sqlServerName string
+param location string
 param sqlDBName string
 
 @description('Username for administrator login')
