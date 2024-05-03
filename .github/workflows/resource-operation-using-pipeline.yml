@@ -33,7 +33,7 @@ jobs:
       
       - name: Deleting one of the deployed resources
         run: 
-          az resource delete -g Applications -n storagedzkk44adqruym --resource-type "Microsoft.Storage/storageAccounts"
+          az resource delete -g Applications -n storagen6ecn4cyrp5kw --resource-type "Microsoft.Storage/storageAccounts"
 
       - name: Deleting all resources
         run: az group delete --name Applications --yes 
