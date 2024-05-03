@@ -32,8 +32,10 @@ jobs:
         run: az deployment group create --resource-group DeployApplication --template-file SqlDatabase.bicep --parameters administratorLogin=rashmi  
       
       - name: Deleting one of the deployed resources
-        run: 
+        run: |
           az resource delete -g DeployApplication -n storage4634 --resource-type "Microsoft.Storage/storageAccounts"
 
       - name: Deleting all resources
         run: az group delete --name DeployApplication --yes 
+
+        #updated
